@@ -17,8 +17,16 @@ Array.from(list).forEach(function(element){
         element.appendChild(row);
     }
 })
-console.log(document.querySelectorAll('.div2'))
+console.log(document.querySelectorAll('.div2'));
 console.log(list);
-console.log('hello')
+console.log('hello');
 
-let cells = document.querySelectorAll('.div2')
+let cells = document.querySelectorAll('.div2');
+
+Array.from(cells).forEach(function(element){
+    element.addEventListener('click',function(){
+        element.style.backgroundColor = 'black';
+    })
+})
+
+console.log('hello')
