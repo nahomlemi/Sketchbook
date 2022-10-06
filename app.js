@@ -1,32 +1,79 @@
-console.log('hello')
+/////////////////-- canvas grid creator --/////////////////
+let num = 16;
 let main = document.querySelector('#main');
 
-for(let i = 0; i<16; i++){
-    let cell = document.createElement("div");
-    cell.classList.add('div');
-    main.appendChild(cell);
+function createGrid(num){
+    for(let i = 0; i<num; i++){
+        let cell = document.createElement("div");
+        cell.classList.add('div');
+        main.appendChild(cell);
+    }
+
+    let list = document.querySelectorAll(`.div`);
+
+    Array.from(list).forEach(function(element){
+        for(let i = 0; i<num; i++){
+            let row = document.createElement("div");
+        row.className += 'div2';
+            element.appendChild(row);
+        }
+    })
 
 }
+createGrid(16);
+////////////////--- delete old canvas ---- /////////////////
 
-let list = document.querySelectorAll(`.div`);
+function removeOldCanvas(){
+    let oldList = document.querySelectorAll('#main .div');
+    oldList.forEach(function(element){
+        element.parentNode.removeChild(element);
+    });
+}
 
-Array.from(list).forEach(function(element){
-    for(let i = 0; i<16; i++){
-        let row = document.createElement("div");
-    row.className += 'div2';
-        element.appendChild(row);
-    }
+////////////////--- canvas size selector --/////////////////
+
+let size = document.querySelectorAll('.grid button');
+
+size.forEach(function(element){
+    element.addEventListener('click', function(){
+        switch (element.className){
+            case 'six':
+                num = 16;
+                removeOldCanvas();
+                createGrid(num);
+                 break;
+            case 'two':
+                num = 32; 
+                removeOldCanvas();
+                createGrid(num);
+                break;
+            case 'four':
+                num = 64; 
+                removeOldCanvas();
+                createGrid(num);
+                break;
+        }
+    })
 })
-console.log(document.querySelectorAll('.div2'));
-console.log(list);
-console.log('hello');
+
+////////////////// - changing color - //////////////////////
+
+let color = 'black';
+let buttons = document.querySelectorAll('.color button');
+
+buttons.forEach(function(element){
+    element.addEventListener('click', function(){
+        color = element.className;
+        window
+    })
+})
+
+///////////////// - use-brush-- /////////////////////////
 
 let cells = document.querySelectorAll('.div2');
 
 Array.from(cells).forEach(function(element){
-    element.addEventListener('click',function(){
-        element.style.backgroundColor = 'black';
+    element.addEventListener('mouseover',function(){
+        element.style.backgroundColor = color;
     })
 })
-
-console.log('hello')
