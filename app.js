@@ -82,3 +82,9 @@ function useColor(){
         })
     })
 }
+num = prompt('insert grid size');
+    while (num>100){
+        num = prompt(`error grid can't be greater than 100`)
+    }
+removeOldCanvas()
+createGrid(num);
