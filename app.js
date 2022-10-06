@@ -1,4 +1,5 @@
 /////////////////-- canvas grid creator --/////////////////
+let color = 'black';
 let num = 16;
 let main = document.querySelector('#main');
 
@@ -18,7 +19,8 @@ function createGrid(num){
             element.appendChild(row);
         }
     })
-
+    changeColor()
+    useColor()
 }
 createGrid(16);
 ////////////////--- delete old canvas ---- /////////////////
@@ -57,23 +59,26 @@ size.forEach(function(element){
 })
 
 ////////////////// - changing color - //////////////////////
+function changeColor(){
+    
+    let buttons = document.querySelectorAll('.color button');
 
-let color = 'black';
-let buttons = document.querySelectorAll('.color button');
-
-buttons.forEach(function(element){
-    element.addEventListener('click', function(){
-        color = element.className;
-        window
+    buttons.forEach(function(element){
+        element.addEventListener('click', function(){
+            color = element.className;
+            window
+        })
     })
-})
+}
 
 ///////////////// - use-brush-- /////////////////////////
 
-let cells = document.querySelectorAll('.div2');
+function useColor(){
+    let cells = document.querySelectorAll('.div2');
 
-Array.from(cells).forEach(function(element){
-    element.addEventListener('mouseover',function(){
-        element.style.backgroundColor = color;
+    Array.from(cells).forEach(function(element){
+        element.addEventListener('mouseover',function(){
+            element.style.backgroundColor = color;
+        })
     })
-})
+}
