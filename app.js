@@ -60,13 +60,12 @@ size.forEach(function(element){
 
 ////////////////// - changing color - //////////////////////
 function changeColor(){
-    
+
     let buttons = document.querySelectorAll('.color button');
 
     buttons.forEach(function(element){
         element.addEventListener('click', function(){
-            color = element.className;
-            window
+            color = element.className; 
         })
     })
 }
@@ -78,6 +77,11 @@ function useColor(){
 
     Array.from(cells).forEach(function(element){
         element.addEventListener('mouseover',function(){
+            if (color == 'rainbow'){
+                let rand = Math.round(Math.random()*5);
+                let colour = [ 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+                element.style.backgroundColor = colour[rand];
+            }
             element.style.backgroundColor = color;
         })
     })
@@ -88,3 +92,6 @@ num = prompt('insert grid size');
     }
 removeOldCanvas()
 createGrid(num);
+
+/////////////////////--random color ---//////////////////
+
